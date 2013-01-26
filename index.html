@@ -57,17 +57,17 @@
     <div class="row-fluid">
       <span class="span4"></span>
       <span class="span2">
-        <a class="btn btn-large btn-primary btn-block btn-square j-modal" href="#j-share" data-toggle="modal" role="modal"><i class="icon-upload-alt icon-white"></i> Share</a>
+        <a class="btn btn-large btn-primary btn-block btn-square j-modal j-share-btn" href="#j-share" data-toggle="modal" role="modal" rel="popover" data-content="Start here by sharing a directory from your computer" data-original-title="Share & Upload"><i class="icon-upload-alt icon-white"></i> Share</a>
       </span>
       <span class="span2">
-        <a class="btn btn-large btn-primary btn-block btn-square" href="#" data-toggle="modal" role="modal" id="j-connectUser"><i class="icon-download-alt icon-white"></i> Connect</a>
+        <a class="btn btn-large btn-primary btn-block btn-square j-connect-btn" href="#" data-toggle="modal" role="modal" rel="popover" data-content="Connect to a User and start Downloading. You will need the UID of the user" data-original-title="Connect & Download" id="j-connectUser"><i class="icon-download-alt icon-white"></i> Connect</a>
       </span>
       <span class="span4"></span>
     </div>
     <br><br>
     <div class="row-fluid">
       <span class="span4"></span>
-      <span class="span4 label label-info" style="text-align:center; padding-bottom: 24px;">
+      <span class="span4 label label-info j-UID" style="text-align:center; padding-bottom: 24px;" rel="popover" data-content="This is your UID which uniquely identifies you. Share it with the person you want to share files with." data-original-title="Your UID">
         <label for="UID">Your UID:</label>
         <input id="UID-home" value="Connecting..." readonly="" size="80" style="width: 272px;" >
       </span>
@@ -76,12 +76,14 @@
     <br><br>
     <div class="row-fluid">
       <span class="span4"></span>
-      <span class="span2"><a href="#j-uploading" class="btn btn-warning btn-block" data-toggle="modal" role="modal">Uploading</a></span>
-      <span class="span2"><a href="#j-downloading" class="btn btn-success btn-block" data-toggle="modal" role="modal">Downloading</a></span>
-
+      <span class="span2"><a href="#j-uploading" class="btn btn-warning btn-block j-uploading-btn" data-toggle="modal" role="modal" rel="tooltip" title="Uploading currently">Uploading</a></span>
+      <span class="span2"><a href="#j-downloading" class="btn btn-success btn-block j-downloading-btn" data-toggle="modal" role="modal" rel="tooltip" title="Files currently being downloaded">Downloading</a></span>
       <span class="span4"></span>
     </div>
-    <footer class="footer navbar-fixed-bottom">P2P Anonymous file sharing. Based on code from <a href="https://github.com/piranna/ShareIt">ShareIt!</a> by <a href="https://github.com/piranna">@prianna</a> and <a href="https://github.com/Miserlou/DirtyShare">DirtyShare</a> by <a href="https://github.com/Miserlou">@Miserlou</a> and awesome support from <a href="mailto:webp2p@librelist.com">webp2p</a>.</footer>
+    <div class="row-fluid">
+      <span class="span12">The How and Why of <a href="http://troysk.com/post/41506807295/whatareyoudownloading">WhatAreYouDownloading.com</a></span>
+    </div>
+    <footer class="footer navbar-fixed-bottom">Anonymous Serverless P2P file sharing. Based on code from <a href="https://github.com/piranna/ShareIt">ShareIt!</a> by <a href="https://github.com/piranna">@prianna</a> and <a href="https://github.com/Miserlou/DirtyShare">DirtyShare</a> by <a href="https://github.com/Miserlou">@Miserlou</a> and awesome support from <a href="mailto:webp2p@librelist.com">webp2p</a>.</footer>
   </div>
 
   <div id="modal-container">
@@ -199,6 +201,11 @@
   <script type="text/javascript">
   $(function(){
     $(".j-modal").modal({show: false, keyboard: true});
+    $(".j-share-btn").popover({placement: 'left', trigger: 'hover'});
+    $(".j-connect-btn").popover({placement: 'right', trigger: 'hover'});
+    $(".j-UID").popover({placement: 'top', trigger: 'hover'});
+    $(".j-uploading-btn, .j-downloading-btn").tooltip();
+
   });
 
   var _gaq = _gaq || [];
