@@ -1,0 +1,146 @@
+html, body { height: 100%; }
+
+#tabs{
+    height: 99%;
+}
+
+#tabs .ui-tabs-panel
+{
+    padding: 0;
+}
+
+#Sharedpoints {
+    cursor: pointer;
+    width: 100%;
+    height: 395px;
+    cellspacing: 0;
+    summary: ""
+}
+
+#Downloading {
+    cursor: pointer;
+    cellspacing: 0;
+    summary: ""
+}
+
+#Sharing {
+    cursor: pointer;
+    cellspacing: 0;
+    summary: ""
+}
+
+span.add-sharedpoint {
+  background-image: url(../images/add-folder.png);
+  background-position: center left;
+  background-repeat: no-repeat;
+  padding: .2em 0 .2em 1.5em;
+  cursor: pointer
+}
+
+
+/* Tools menu
+ * ------------------------------------------------------------------------- */
+
+#tools-menu
+{
+  float: right;
+}
+
+#tools-menu-submenu
+{
+    width: 240px;   /* If this is commented, tools menu is showed horizontal */
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: -200px
+}
+
+#tools-menu ul {
+  padding: 0;
+}
+
+#tools-menu span {
+  background-position: center left;
+  background-repeat: no-repeat;
+  padding: .2em 0 .2em 1.5em;
+}
+
+#tools-menu a {
+  cursor: "pointer"
+}
+
+span.user {
+  background-image: url(../images/user.png);
+}
+
+span.about {
+  background-image: url(../images/about.png);
+}
+
+
+#Home
+{
+    text-align: center
+}
+
+#Home #logo
+{
+    height: 120px
+}
+
+#Home span {
+  background-position: center left;
+  background-repeat: no-repeat;
+  padding: .2em 0 .2em 1.5em;
+}
+
+
+#UID-home
+{
+    font-size: 13px
+}
+
+
+#Preferences2 {
+    cursor: pointer
+}
+
+#ConnectUser2 {
+    cursor: pointer
+}
+
+#About2 {
+    cursor: pointer
+}
+
+
+#dialog-about #logo {
+    float: right;
+    height: 120px
+}
+
+#dialog-about h1,p,br,span {
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+#dialog-about div {
+    margin-top: 12px;
+}
+
+#dialog-config {
+    padding: 0;
+}
+
+#Sharedpoints-tab {
+    padding: 0;
+}
+
+#fork_me {
+    border: none;
+    position: fixed; 
+    bottom: 0; 
+    right: 0; 
+    border-radius: 0px 8px 8px 0px;
+    box-shadow: 3px 3px 3px #666;
+}

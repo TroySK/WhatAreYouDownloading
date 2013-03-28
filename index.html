@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>WhatAreYouDownloading?</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="keywords" content="node, nodejs, javascript, p2p, filesharing, webp2p, web peer to peer, p2pweb, open source" />
+  <meta name="description" content="Peer to Peer filesharing system written in pure Javascript" />
+
+  <!-- Stylesheets -->
+  <link type="text/css" rel="stylesheet" href="public/stylesheets/bootstrap.min.css" media="screen"/>
+  
+  <link type="text/css" rel="stylesheet" href="public/stylesheets/plugins/jquery.treeTable.css"/>
+  <link type="text/css" rel="stylesheet" href="public/stylesheets/filesmanager.css" media="screen"/>
+  <link type="text/css" rel="stylesheet" href="public/stylesheets/font-awesome.min.css" media="screen"/>
+
+
+  <!-- External libraries -->
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="public/javascripts/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="//raw.github.com/taijinlee/humanize/master/humanize.js"></script>
+  <script type="text/javascript" src="//shareit.5apps.com/js/webp2p/handshake/simpleSignaling.js"></script>
+  <script type="text/javascript" src="//shareit.5apps.com/js/webp2p/handshake/PubNub.js"></script>
+  <script type="text/javascript" src="//shareit.5apps.com/js/webp2p/lib/BoolArray.js"></script>
+  <script type="text/javascript" src="//shareit.5apps.com/js/webp2p/lib/datachannel.js"></script>
+  <script type="text/javascript" src="//shareit.5apps.com/js/webp2p/lib/EventTarget.js"></script>
+
+
+  <!-- Javascript -->
+  <script type="text/javascript" src="public/javascripts/webp2p/index.js"></script>
+
+  <script type="text/javascript" src="public/javascripts/CompatibilityManager.js"></script>
+  <script type="text/javascript" src="public/javascripts/index.js"></script>
+  <script type="text/javascript" src="public/javascripts/policy.js"></script>
+
+  <script type="text/javascript" src="public/javascripts/ui/dialogAbout.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/dialogConfig.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/filesTable.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/menuTools.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/tabDownloading.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/tabPeer.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/tabSharing.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/tabsPeers.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/tableSharedpoints.js"></script>
+  <script type="text/javascript" src="public/javascripts/ui/ui.js"></script>
+
+  <script type="text/javascript" src="public/javascripts/plugins/jquery.treeTable.js"></script>
+
+
+</head>
+<body>
+  <a href="https://github.com/ShirsenduK/WhatAreYouDownloading"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+  <div class="container-fluid">
+    <div class="page-header pagination-centered"><h1>WhatAreYouDownloading?</h1></div>
+    <br>
+    <div class="row-fluid">
+      <span class="span4"></span>
+      <span class="span2">
+        <a class="btn btn-large btn-primary btn-block btn-square j-modal j-share-btn" href="#j-share" data-toggle="modal" role="modal" rel="popover" data-content="Start here by sharing a directory from your computer" data-original-title="Share & Upload"><i class="icon-upload-alt icon-white"></i> Share</a>
+      </span>
+      <span class="span2">
+        <a class="btn btn-large btn-primary btn-block btn-square j-connect-btn" href="#" data-toggle="modal" role="modal" rel="popover" data-content="Connect to a User and start Downloading. You will need the UID of the user" data-original-title="Connect & Download" id="j-connectUser"><i class="icon-download-alt icon-white"></i> Connect</a>
+      </span>
+      <span class="span4"></span>
+    </div>
+    <br><br>
+    <div class="row-fluid">
+      <span class="span4"></span>
+      <span class="span4 label label-info j-UID" style="text-align:center; padding-bottom: 24px;" rel="popover" data-content="This is your UID which uniquely identifies you. Share it with the person you want to share files with." data-original-title="Your UID">
+        <label for="UID">Your UID:</label>
+        <input id="UID-home" value="Connecting..." readonly="" size="80" style="width: 272px;" >
+      </span>
+      <span class="span4"></span>
+    </div>
+    <br><br>
+    <div class="row-fluid">
+      <span class="span4"></span>
+      <span class="span2"><a href="#j-uploading" class="btn btn-warning btn-block j-uploading-btn" data-toggle="modal" role="modal" rel="tooltip" title="Uploading currently">Uploading</a></span>
+      <span class="span2"><a href="#j-downloading" class="btn btn-success btn-block j-downloading-btn" data-toggle="modal" role="modal" rel="tooltip" title="Files currently being downloaded">Downloading</a></span>
+      <span class="span4"></span>
+    </div>
+    <div class="row-fluid">
+      <span class="span12">The How and Why of <a href="http://troysk.com/post/41506807295/whatareyoudownloading">WhatAreYouDownloading.com</a></span>
+    </div>
+    <div class="row-fluid">
+      <span class="span4"></span>
+      <span class="span4 label label-important">Works only on latest builds of Chrome and Firefox.</span>
+      <span class="span4"></span>
+    </div>
+    <div class="row-fluid">
+      <span class="span12">Follow the discussion on <a href="http://news.ycombinator.com/item?id=5119876">Hacker News.</a></span>
+    </div>
+    <footer class="footer navbar-fixed-bottom">Anonymous Serverless P2P file sharing by <a href="https://github.com/ShirsenduK">ShirsenduK</a>. Based on code from <a href="https://github.com/piranna/ShareIt">ShareIt!</a> by <a href="https://github.com/piranna">@piranna</a> and <a href="https://github.com/Miserlou/DirtyShare">DirtyShare</a> by <a href="https://github.com/Miserlou">@Miserlou</a> and awesome support from <a href="mailto:webp2p@librelist.com">webp2p</a>.</footer>
+  </div>
+
+  <div id="modal-container">
+    <div id="j-share" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Share & Upload</h3>
+      </div>
+      <div class="modal-body">
+        <div id="Sharedpoints-tab">
+          <div style="max-height:360px;height:360px">
+              <table id="Sharedpoints">
+                  <thead>
+                      <tr>
+                          <th scope="col" width="80%">Path</th>
+                          <th scope="col">Shared</th>
+                          <th scope="col">Remove</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <tbody/>
+              </table>
+          </div>
+          <a onclick="$('#files').click()">
+              <span class="add-sharedpoint">Add shared point</span>
+          </a>
+          <input type="file" id="files" name="files[]" directory webkitdirectory multiple style="height: 20px; opacity: 0; filter:alpha(opacity: 0)"/>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+      </div>
+    </div>
+
+    <div id="j-connect" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Connect & Download</h3>
+      </div>
+      <div class="modal-body">
+        <div id="tabs"></div>        
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+      </div>
+    </div>
+
+    <div id="j-misc" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Connect & Download</h3>
+      </div>
+      <div class="modal-body">
+        Misc
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+      </div>
+    </div>
+
+
+    <div id="j-downloading" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Currently Downloading</h3>
+      </div>
+      <div class="modal-body">
+        <table id="Downloading">
+          <thead>
+              <tr>
+                  <th scope="col" width="100%">Filename</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Size</th>
+                  <th scope="col">Downloaded</th>
+                  <th scope="col">Progress</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Time remaining</th>
+                  <th scope="col">Speed</th>
+                  <th scope="col">Sources</th>
+                  <th scope="col">Date added</th>
+              </tr>
+          </thead>
+          <tbody>
+          <tbody/>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+      </div>
+    </div>
+
+
+    <div id="j-uploading" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Uploading Currently</h3>
+      </div>
+      <div class="modal-body">
+        <table id="Sharing">
+          <thead>
+            <tr>
+              <th scope="col" width="100%">Filename</th>
+              <th scope="col">Type</th>
+              <th scope="col">Size</th>
+            </tr>
+          </thead>
+          <tbody/>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+  $(function(){
+    $(".j-modal").modal({show: false, keyboard: true});
+    $(".j-share-btn").popover({placement: 'left', trigger: 'hover'});
+    $(".j-connect-btn").popover({placement: 'right', trigger: 'hover'});
+    $(".j-UID").popover({placement: 'top', trigger: 'hover'});
+    $(".j-uploading-btn, .j-downloading-btn").tooltip();
+
+  });
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37888674-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+</body>
+</html>

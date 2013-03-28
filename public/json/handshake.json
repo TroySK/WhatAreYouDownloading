@@ -1,0 +1,19 @@
+[
+    [
+        "PubNub",
+        {
+            "channel"      : "ShareIt",
+            "publish_key"  : "pub-c-ff156940-fae4-4e41-8fbb-584f6433c203",
+            "subscribe_key": "sub-c-f6acc2de-63c8-11e2-b80b-12313f022c90",
+            "ssl"          : true,
+
+            "max_connections" : 50
+        }
+    ],
+    [
+        "SimpleSignaling",
+        {
+            "ws_uri": "wss://simplesignaling-piranna.dotcloud.com"
+        }
+    ]
+]
